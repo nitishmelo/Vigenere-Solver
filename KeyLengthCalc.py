@@ -2,16 +2,11 @@ from collections import Counter
 from VignereBreakWithKeyLength import alphabet
 
 def calcIOC(text):
-
     loweredtext = list([ch for ch in text if ch.isalpha()])
     loweredtext = "".join(loweredtext)
     loweredtext = loweredtext.lower()
     alphalen = len(alphabet)
     textlen = len(loweredtext)
-
-    if (textlen == 1):
-        return 0
-
     lettercounter = Counter(loweredtext)
     ioc = 0
     sum2 = 0
@@ -25,12 +20,12 @@ def calcIOC(text):
 
 
 def KeyLength(text):
-
     loweredtext = list([ch for ch in text if ch.isalpha()])
     loweredtext = "".join(loweredtext)
     loweredtext = loweredtext.lower()
-
     textlen = len(loweredtext)
+    if textlen < 2:
+        return 1;
     maxioc = 0.0
     iterations = int(textlen / 10) + 3
     maxdiff = (0.0, 1)

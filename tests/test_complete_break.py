@@ -1,5 +1,6 @@
 import VignereBreakWithKeyLength as VP
 import KeyLengthCalc as KLC
+import VigenereCompleteBreak as VCB
     
 def callAndAssert(cipherText, capsys, plainText, key, keyLen):
     assert KLC.KeyLength(cipherText) == keyLen
@@ -7,7 +8,12 @@ def callAndAssert(cipherText, capsys, plainText, key, keyLen):
     VP.breaker(cipherText, keyLen)
     captured = capsys.readouterr()
     assert captured.out == expected
-    
+
+def test_no_letters(capsys):
+    VCB.decode(":)")
+    captured = capsys.readouterr()
+    assert captured.err == "Text cannot be decrpyted; there are no letters."
+            
 def test_key_len_1(capsys):
     cipherText = "Jxyi yi jxu vyhij juij; q hqjxuh ixehj edu, jee! Jxu auo budwjx yi 1!"
     plainText = "This is the first test; a rather short one, too! The key length is 1!"

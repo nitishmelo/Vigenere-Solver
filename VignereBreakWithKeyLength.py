@@ -1,8 +1,17 @@
 from collections import Counter
-
+import sys
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 def breaker(text, keylen):
+    savedtext = list([ch for ch in text if ch.isalpha()])
+    
+    if not savedtext:
+        sys.stderr.write("Text cannot be decrpyted; there are no letters.")
+        return
+
+    savedtext = "".join(savedtext)
+    savedtext = savedtext.lower()
+    textlen = len(savedtext)
 
     commonlettervals = [
         5, 20, 1, 15, 9, 14, 19, 18, 8, 12, 4, 3, 21, 13, 6, 16, 7, 23, 25, 2,
@@ -13,11 +22,7 @@ def breaker(text, keylen):
         0.0407, 0.0382, 0.0334, 0.0273, 0.0251, 0.0240, 0.0214, 0.0187, 0.0168,
         0.0166, 0.0148, 0.0105, 0.0054, 0.0023, 0.0016, 0.0012, 0.0009
     ]
-    savedtext = list([ch for ch in text if ch.isalpha()])
-    savedtext = "".join(savedtext)
-    savedtext = savedtext.lower()
-    textlen = len(savedtext)
-    keyl = int(keylen)
+    keyl = keylen
     strind = 0
     subtext = ""
     key = ""
@@ -71,9 +76,7 @@ def breaker(text, keylen):
     key = key.upper()
     print(f"\nKey: {key}\nPlaintext: {decrypt(text, key)}")
 
-
 def decrypt(text, key):
-
     keylen = len(key)
     plaintext = ""
     alphabet = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
