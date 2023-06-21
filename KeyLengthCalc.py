@@ -1,5 +1,5 @@
 from collections import Counter
-from VignereBreakWithKeyLength import breaker, decrypt, alphabet
+from VignereBreakWithKeyLength import alphabet
 
 def calcIOC(text):
 
@@ -59,8 +59,3 @@ def KeyLength(text):
 
     keyl = maxdiff[1]
     return keyl
-
-print("\nEnter ciphertext: ")
-text = input()
-keyl = KeyLength(text)
-breaker(text, keyl)
