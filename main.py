@@ -1,5 +1,4 @@
 import VigenereCompleteBreak as VCB
-
 def main():
     print("\nEnter ciphertext: ")
     text = input()

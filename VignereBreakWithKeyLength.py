@@ -6,7 +6,7 @@ def breaker(text, keylen):
     savedtext = list([ch for ch in text if ch.isalpha()])
     
     if not savedtext:
-        sys.stderr.write("Text cannot be decrpyted; there are no letters.")
+        sys.stderr.write("Text cannot be decrypted; there are no letters.")
         return
 
     savedtext = "".join(savedtext)
